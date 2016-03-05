@@ -1,0 +1,16 @@
+[ignore]
+.*/config-chain/test/.*
+
+[libs]
+
+[options]
+module.use_strict=true
+
+module.system=node
+module.system.node.resolve_dirname=node_modules/
+
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable
+
+unsafe.enable_getters_and_setters=true
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue

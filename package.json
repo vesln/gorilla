@@ -1,0 +1,62 @@
+{
+  "name": "gorilla",
+  "version": "0.0.0",
+  "description": "The missing database layer for Node.js",
+  "homepage": "https://github.com/vesln/gorilla",
+  "author": {
+    "name": "Veselin Todorov",
+    "email": "hi@vesln.com",
+    "url": "https://github.com/vesln"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vesln/gorilla.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vesln/gorilla/issues"
+  },
+  "main": "lib/index.js",
+  "options": {
+    "mocha": "test"
+  },
+  "scripts": {
+    "build": "npm run build:lib",
+    "build:lib": "babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "test": "npm run test:tests && npm run test:lint && npm run test:flow",
+    "test:lint": "standard --verbose | snazzy",
+    "test:tests": "mocha test",
+    "test:flow": "flow",
+    "version": "npm run build"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-syntax-class-properties": "^6.3.13",
+    "babel-plugin-transform-class-properties": "^6.4.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-register": "^6.3.13",
+    "chai": "^3.4.1",
+    "flow-bin": "^0.27.0",
+    "mocha": "^2.4.5",
+    "rimraf": "^2.5.2",
+    "snazzy": "^2.0.1",
+    "standard": "^5.4.1"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "global": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "expect"
+    ]
+  }
+}

@@ -1,3 +1,6 @@
+/* @flow */
+/* eslint-disable */
+
 declare class describe {
   static (description: string, spec: () => void): void;
   static only(description: string, spec: () => void): void;

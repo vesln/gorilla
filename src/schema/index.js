@@ -11,6 +11,22 @@ type SchemaTypes = {
   [key: string]: Class<$Subtype<SchemaType>>
 };
 
+// TODO(vesln): formatters
+//
+// type: string|number|date|boolean
+
+// TODO(vesln): validators
+//
+// required: true
+// length: { min: number, max: number }
+// acceptance
+// confirmation
+// exclusion
+// format
+// inclusion
+// length
+// numericality
+// absence
 export default class Schema {
   props: Object;
   schemaTypes: SchemaTypes;

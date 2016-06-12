@@ -26,17 +26,13 @@ describe('Schema', () => {
     it('passes the prop value through all formatters', () => {
       class AgeFormatter {
         format (value) { return true }
-        isValid () {}
       }
 
       class DummyFormatter {
         format (value) { return `${value}!` }
-        isValid () {}
       }
 
-      const schema = subject({
-        age: { age: true, dummy: true }
-      }, {
+      const schema = subject({ age: { age: true, dummy: true } }, {
         age: AgeFormatter,
         dummy: DummyFormatter
       })

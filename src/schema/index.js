@@ -5,7 +5,6 @@ import isObject from 'lodash.isobject'
 
 interface SchemaType {
   format (): mixed;
-  isValid (): mixed;
 }
 
 type SchemaTypes = {

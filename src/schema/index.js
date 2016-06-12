@@ -37,13 +37,17 @@ export default class Schema {
   }
 
   format (prop: string, value: any): any {
-    if (!(prop in this.props)) {
-      throw new Error(`The property "${prop}" does not exist in the schema`)
-    }
-
     const schemaTypes = this.schemaTypes
     const spec = this.props[prop]
 
+    if (!(prop in this.props)) {
+      throw new Error(
+        `The property "${prop}" does not exist in the schema. ` +
+        `The existing properties are: ${Object.keys(this.props).join(', ')}`
+      )
+    }
+
+    // example: { name: true }
     if (spec === true) {
       return value
     }

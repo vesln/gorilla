@@ -50,6 +50,7 @@ export default class Schema {
     }
 
     return Object.keys(spec).reduce((newValue, key) => {
+      // TODO(vesln): the signature should be (record, key, value)
       const formatter = new schemaTypes[key]()
       return formatter.format(newValue)
     }, value)

@@ -55,8 +55,13 @@
       "before",
       "beforeEach",
       "after",
+      "Class",
+      "$Subtype",
       "afterEach",
       "expect"
     ]
+  },
+  "dependencies": {
+    "lodash.isobject": "^3.0.2"
   }
 }

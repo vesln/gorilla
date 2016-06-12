@@ -1,33 +1,47 @@
+/* @flow */
+
 import { expect } from 'chai'
-import { schema } from '../src'
+import Schema from '../src/schema'
 
-describe('schema', () => {
-  const subject = (...args) => schema(...args)
-  const testSchema = subject({ age: schema.integer })
+describe('Schema', () => {
+  const subject = (...args: any) => new Schema(...args)
 
-  it('can parse a value', () => {
-    expect(testSchema.parse('age', 3)).to.equal(3)
+  describe('intialization', () => {
+    it('throws an error if the schema definition is empty', () => {
+      expect(() => {
+        subject()
+      }).to.throw('The schema definition cannot be empty')
+    })
+
+    it('throws an error when any of the schema definition prop is malformated', () => {
+      expect(() => {
+        subject({ age: undefined })
+      }).to.throw(
+        'The value of "age" is invalid. Use `{ age: true }` if you do not want to specify any types or validators'
+      )
+    })
   })
 
-  it('throws an error if the prop is unknown', () => {
-    const testSchema = subject({ age: schema.integer })
+  describe('format', () => {
+    it('passes the prop value through all formatters', () => {
+      class AgeFormatter {
+        format (value) { return true }
+        isValid () {}
+      }
 
-    expect(() => {
-      testSchema.parse('typo', 3)
-    }).to.throw('Unknown schema property "typo". The available properties are: age')
-  })
-})
+      class DummyFormatter {
+        format (value) { return `${value}!` }
+        isValid () {}
+      }
 
-describe('schema type integer', () => {
-  const subject = (...args) => schema(...args)
+      const schema = subject({
+        age: { age: true, dummy: true }
+      }, {
+        age: AgeFormatter,
+        dummy: DummyFormatter
+      })
 
-  it('casts strings to numbers when possible', () => {
-    const testSchema = subject({ age: schema.integer })
-    expect(testSchema.parse('age', '3')).to.equal(3)
-  })
-
-  it('does not cast strings that will result in NaN', () => {
-    const testSchema = subject({ age: schema.integer })
-    expect(testSchema.parse('age', 'test')).to.equal('test')
+      expect(schema.format('age', 3)).to.equal('true!')
+    })
   })
 })

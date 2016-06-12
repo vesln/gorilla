@@ -2,6 +2,7 @@
 .*/config-chain/test/.*
 
 [libs]
+interfaces/
 
 [options]
 module.use_strict=true

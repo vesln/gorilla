@@ -23,6 +23,9 @@ describe('Schema', () => {
   })
 
   describe('format', () => {
+    it.skip('throws na error if the prop does not exist')
+    it.skip('constructs the formatters with the correct config')
+
     it('passes the prop value through all formatters', () => {
       class AgeFormatter {
         format (value) { return true }

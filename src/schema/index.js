@@ -25,7 +25,7 @@ export default class Schema {
         throw new Error(
           `The value of "${prop}" is invalid. ` +
           `Use \`{ ${prop}: true }\` if you do not want to specify ` +
-          `any types or validators`
+          `any formatters or validators`
         )
       }
     })

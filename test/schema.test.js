@@ -17,7 +17,7 @@ describe('Schema', () => {
       expect(() => {
         subject({ age: undefined })
       }).to.throw(
-        'The value of "age" is invalid. Use `{ age: true }` if you do not want to specify any types or validators'
+        'The value of "age" is invalid. Use `{ age: true }` if you do not want to specify any formatters or validators'
       )
     })
   })
